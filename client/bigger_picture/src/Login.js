@@ -1,17 +1,24 @@
 
 import React from 'react'
-import { Grid,Paper, Avatar, TextField, Button, Typography,Link as Nv } from '@material-ui/core'
+import { Grid,Paper, Avatar, TextField, Button, makeStyles, Typography,Link as Nv } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Link, NavLink } from "react-router-dom";
 import {useState} from 'react';
 import axios from 'axios';
 import { useHistory, useParams } from "react-router-dom";
- 
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+
+   
+
+
 const Login=()=>{
  
-    const paperStyle={padding :20,height:'70vh',width:480, margin:"20px auto"}
+    const paperStyle={padding :20,height:'70vh',width:380, margin:"20px auto"}
     const avatarStyle={backgroundColor:'#3370bd'}
-    const btnstyle={margin:'8px 0'}
+    const btnstyle={margin:'8px 2'}
      
     const [msg,setMsg] = useState('');
  
@@ -52,9 +59,34 @@ const Login=()=>{
         history.push("/Home");
       });
     }
+    const useStyles = makeStyles((theme) => ({
+        root: {
+          flexGrow: 1,
+        },
+        menuButton: {
+          marginRight: theme.spacing(0),
+        },
+        title: {
+          flexGrow: 1,
+        },
+      }));
+
  
+    const classes = useStyles();
     
     return(
+        <div className={classes.root}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+              {/* <MenuIcon /> */}
+            </IconButton>
+            <Typography variant="h5" className={classes.title} color="black">
+              Booking App
+            </Typography>
+            {/* <Button color="inherit">Login</Button> */}
+          </Toolbar>
+        </AppBar>
         <Grid>
             <Paper elevation={10} style={paperStyle}>
                 <Grid align='center'>
@@ -75,6 +107,7 @@ const Login=()=>{
                 </Typography>
             </Paper>
         </Grid>
+        </div>
     )
 }
  

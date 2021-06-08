@@ -1,28 +1,31 @@
 import React from 'react'
-import { Grid,Paper, IconButton, AppBar, Toolbar, MenuIcon, Avatar, TextField, MenuItem, Button, makeStyles, Typography, Select, FormControl} from '@material-ui/core'
+import { Grid,Paper, IconButton, AppBar, Toolbar, Avatar, TextField, MenuItem, Button, makeStyles, Typography, Select, FormControl} from '@material-ui/core'
 // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Link, NavLink } from "react-router-dom";
 import {useState} from 'react';
 import InputLable from '@material-ui/core/InputLabel'
 import axios from 'axios';
+import MenuIcon from '@material-ui/icons/Menu';
+
 
  
 const useStyles = makeStyles((theme) => ({
     root: {
-      flexGrow: 1,
+      flexGrow: 0,
     },
     menuButton: {
-      marginRight: theme.spacing(2),
+      marginRight: theme.spacing(0),
     },
     title: {
-      flexGrow: 1,
+      flexGrow: 3,
     },
   }));
    
+  
  
 const Signup=()=>{
  
-    const paperStyle={padding :20,height:'70vh',width:480, margin:"20px auto"}
+    const paperStyle={padding :20,height:'70vh',width:380, margin:"20px auto"}
     const avatarStyle={backgroundColor:'#3370bd'}
     const btnstyle={margin:'8px 0'}
  
@@ -58,8 +61,21 @@ const Signup=()=>{
         setUser({Username:"",id_number:"", phoneNo:"",location:"",password:""}) // To Clear all fields
  
         }
-     
+        const classes = useStyles();
+
     return(
+        <div className={classes.root}>
+    <AppBar position="static">
+      <Toolbar>
+        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          {/* <MenuIcon /> */}
+        </IconButton>
+        <Typography variant="h5" className={classes.title} color="black">
+          Booking App
+        </Typography>
+        {/* <Button color="inherit">Login</Button> */}
+      </Toolbar>
+    </AppBar>
         <Grid>
             <Paper elevation={10} style={paperStyle}>
                 <Grid align='center'>
@@ -98,6 +114,7 @@ const Signup=()=>{
                 </Typography>
             </Paper>
         </Grid>
+        </div>
     )
 }
 
